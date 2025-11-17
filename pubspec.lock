@@ -107,6 +107,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.2"
+  font_awesome_flutter:
+    dependency: "direct main"
+    description:
+      name: font_awesome_flutter
+      sha256: b9011df3a1fa02993630b8fb83526368cf2206a711259830325bab2f1d2a4eb0
+      url: "https://pub.dev"
+    source: hosted
+    version: "10.12.0"
   leak_tracker:
     dependency: transitive
     description:
@@ -306,4 +314,8 @@ packages:
     version: "6.6.1"
 sdks:
   dart: ">=3.9.0 <4.0.0"
+<<<<<<< HEAD
   flutter: ">=3.29.0"
+=======
+  flutter: ">=3.27.0"
+>>>>>>> 4b73deb4448cbbdfeef29a02b2f064c23c14e298
