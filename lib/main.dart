@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jurnalku_app/pages/dashboard.dart';
 import 'package:jurnalku_app/pages/explore.dart';
 
 void main() {
