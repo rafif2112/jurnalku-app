@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:jurnalku_app/pages/dashboard.dart';
 
 class Explore extends StatefulWidget {
   const Explore({super.key});
@@ -30,8 +31,7 @@ Widget build(BuildContext context) {
           ),
           ElevatedButton(
             onPressed: () {
-              // TODO: pindah halaman ke Dashboard
-              // Navigator.push(context, MaterialPageRoute(builder: (_) => DashboardPage()));
+              Navigator.push(context, MaterialPageRoute(builder: (_) => Dashboard()));
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: blue,
