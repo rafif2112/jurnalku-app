@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jurnalku_app/pages/dashboard.dart';
+import 'package:jurnalku_app/pages/login.dart';
 
 class Explore extends StatefulWidget {
   const Explore({super.key});
@@ -31,14 +32,14 @@ Widget build(BuildContext context) {
           ),
           ElevatedButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (_) => Dashboard()));
+              Navigator.push(context, MaterialPageRoute(builder: (_) => Login()));
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: blue,
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             ),
-            child: const Text("Dashboard", style: TextStyle(color: Colors.white)),
+            child: const Text("Login", style: TextStyle(color: Colors.white)),
           ),
         ],
       ),
