@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jurnalku_app/pages/dashboard.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -109,7 +110,11 @@ class Login extends StatelessWidget {
                         ),
                         backgroundColor: Colors.blue,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, 
+                          MaterialPageRoute(builder: (context) => const Dashboard()),
+                        )
+                      },
                       child: const Text(
                         "Masuk",
                         style: TextStyle(
