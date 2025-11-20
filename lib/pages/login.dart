@@ -1,7 +1,4 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:flutter/material.dart';
-import 'package:jurnalku_app/pages/dashboard.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -12,7 +9,6 @@ class Login extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
-          // Background Image
           Container(
             width: double.infinity,
             height: 280,
@@ -113,11 +109,7 @@ class Login extends StatelessWidget {
                         ),
                         backgroundColor: Colors.blue,
                       ),
-                      onPressed: () {
-                        Navigator.push(context, 
-                          MaterialPageRoute(builder: (_) => const Dashboard())
-                        );
-                      },
+                      onPressed: () {},
                       child: const Text(
                         "Masuk",
                         style: TextStyle(
@@ -141,6 +133,31 @@ class Login extends StatelessWidget {
               ),
             ),
           ),
+          SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "Menyatukan Upaya untuk Kemajuan Siswa",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                    color: Color(0xFF212121),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  "Jurnalku adalah aplikasi cerdas yang membantu guru dan siswa dalam memantau dan mengelola kompetensi keahlian siswa secara efektif.",
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Color(0xFF616161),
+                  ),
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );
