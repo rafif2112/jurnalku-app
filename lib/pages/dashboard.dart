@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:jurnalku_app/widgets/appbar/app_bar_component.dart';
 import 'package:jurnalku_app/widgets/card/dashboard_card.dart';
 import 'package:jurnalku_app/widgets/card/statistic_card.dart';
 
@@ -11,43 +12,7 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        shape: Border(
-          bottom: BorderSide(color: Colors.grey.shade300, width: 1.0),
-        ),
-        leading: IconButton(
-          icon: Icon(Icons.home_outlined, size: 26, color: Colors.grey[600]),
-          onPressed: () {},
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      'Muhamad Rafif',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    Text(
-                      'PPLG XII-5',
-                      style: TextStyle(fontSize: 12, color: Colors.grey[600]),
-                    ),
-                  ],
-                ),
-                SizedBox(width: 15),
-                Image.asset('assets/images/profile.png', width: 40, height: 40),
-              ],
-            ),
-          ),
-        ],
-      ),
+      appBar: const AppBarComponent(),
       body: SingleChildScrollView(
         child: Column(
           children: [
