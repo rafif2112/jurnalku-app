@@ -55,7 +55,6 @@ class Dashboard extends StatelessWidget {
                 ],
               ),
             ),
- 
             // CONTENT
             Padding(
               padding: const EdgeInsets.all(20.0),
