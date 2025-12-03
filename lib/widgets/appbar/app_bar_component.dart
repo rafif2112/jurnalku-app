@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:jurnalku_app/pages/attitude_record.dart';
+import 'package:jurnalku_app/pages/catatan_sikap.dart';
 import 'package:jurnalku_app/pages/dashboard.dart';
 import 'package:jurnalku_app/pages/profile.dart';
 
@@ -9,7 +11,7 @@ enum MenuOptions {
   jurnalPembiasaan(icon: Icons.book_outlined, label: 'Jurnal Pembiasaan'),
   permintaanSaksi(icon: Icons.how_to_reg_outlined, label: 'Permintaan Saksi'),
   progress(icon: Icons.bar_chart_outlined, label: 'Progress'),
-  catatanSikap(icon: Icons.warning_amber_outlined, label: 'Catatan Sikap'),
+  catatanSikap(icon: Icons.warning_amber_outlined, label: 'Catatan Sikap', widget: AttitudeRecord()),
   panduanPenggunaan(icon: Icons.menu_book_outlined, label: 'Panduan Penggunaan'),
   pengaturanAkun(icon: Icons.settings_outlined, label: 'Pengaturan Akun'),
   logOut(icon: Icons.logout_outlined, label: 'Log Out');
