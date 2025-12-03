@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:jurnalku_app/pages/dashboard.dart';
 import 'package:jurnalku_app/pages/profile.dart';
+import 'package:jurnalku_app/pages/explore.dart';
+import 'package:jurnalku_app/pages/progress.dart';
+import 'package:jurnalku_app/pages/accountSetting.dart';
+import 'package:jurnalku_app/pages/login.dart';
 
 enum MenuOptions {
   dashboard(icon: Icons.home_outlined, label: 'Dashboard', widget: Dashboard()),
   profile(icon: Icons.person_2_outlined, label: 'Profil', widget: Profile()),
-  explore(icon: Icons.explore_outlined, label: 'Jelajahi'),
+  explore(icon: Icons.explore_outlined, label: 'Jelajahi', widget: Explore()),
   jurnalPembiasaan(icon: Icons.book_outlined, label: 'Jurnal Pembiasaan'),
   permintaanSaksi(icon: Icons.how_to_reg_outlined, label: 'Permintaan Saksi'),
-  progress(icon: Icons.bar_chart_outlined, label: 'Progress'),
+  progress(icon: Icons.bar_chart_outlined, label: 'Progress', widget: Progress()),
   catatanSikap(icon: Icons.warning_amber_outlined, label: 'Catatan Sikap'),
   panduanPenggunaan(icon: Icons.menu_book_outlined, label: 'Panduan Penggunaan'),
-  pengaturanAkun(icon: Icons.settings_outlined, label: 'Pengaturan Akun'),
-  logOut(icon: Icons.logout_outlined, label: 'Log Out');
+  pengaturanAkun(icon: Icons.settings_outlined, label: 'Pengaturan Akun', widget: Settings()),
+  logOut(icon: Icons.logout_outlined, label: 'Log Out', widget: Login()),;
 
   final IconData icon;
   final String label;
