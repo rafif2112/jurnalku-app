@@ -1,0 +1,21 @@
+# Paksa semua file teks menggunakan LF (standar Linux/Mac) di dalam repo
+# Tapi saat di-checkout ke Windows, Git akan otomatis mengubahnya jadi CRLF (jika setting user default)
+# atau tetap LF (jika modern). Ini mencegah konflik.
+* text=auto
+
+# File Dart & code lain dipaksa pakai LF (rekomendasi Flutter)
+*.dart text eol=lf
+*.json text eol=lf
+*.yaml text eol=lf
+*.md text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.ts text eol=lf
+*.java text eol=lf
+*.kt text eol=lf
+*.swift text eol=lf
+*.xml text eol=lf
+*.gradle text eol=lf
+*.sh text eol=lf
+*.txt text eol=lf
