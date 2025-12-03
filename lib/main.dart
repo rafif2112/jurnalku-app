@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jurnalku_app/pages/explore.dart';
+import 'package:jurnalku_app/pages/witnessRequest.dart';
 
 void main() {
   runApp(const MyApp());

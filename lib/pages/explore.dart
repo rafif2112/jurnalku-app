@@ -33,8 +33,6 @@ class _ExploreState extends State<Explore> {
                 ),
               ],
             ),
-
-            // TOMBOL LOGIN YANG SUDAH DIBENERIN
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
