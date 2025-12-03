@@ -27,14 +27,6 @@ class CompetencyStatisticCard extends StatelessWidget {
         color: Colors.white,
         border: Border.all(color: Colors.grey[300]!),
         borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
-            spreadRadius: 0.5,
-            blurRadius: 5,
-            offset: const Offset(0, 5),
-          ),
-        ],
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
