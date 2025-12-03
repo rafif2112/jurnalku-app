@@ -10,161 +10,221 @@ class Login extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
-          Container(
-            width: double.infinity,
-            height: 280,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("assets/images/banner.jpg"),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          Container(
-            width: double.infinity,
-            height: 280,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Colors.black.withOpacity(0.4),
-                  Colors.transparent,
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
-            ),
-          ),
-
-          Center(
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 24),
-              padding: const EdgeInsets.all(24),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(16),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.15),
-                    blurRadius: 12,
-                    offset: const Offset(0, 6),
-                  )
-                ],
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    "Masuk untuk memulai Jurnalku",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-
-                  const SizedBox(height: 28),
-
-                  const Text("Username atau NIS",
-                      style: TextStyle(fontWeight: FontWeight.w600)),
-                  const SizedBox(height: 8),
-                  TextField(
-                    decoration: InputDecoration(
-                      hintText: "Masukkan username atau NIS",
-                      filled: true,
-                      fillColor: const Color(0xffF3F6F9),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide.none,
-                      ),
-                    ),
-                  ),
-
-                  const SizedBox(height: 20),
-
-                  const Text("Password",
-                      style: TextStyle(fontWeight: FontWeight.w600)),
-                  const SizedBox(height: 8),
-                  TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      hintText: "Masukkan password",
-                      filled: true,
-                      fillColor: const Color(0xffF3F6F9),
-                      suffixIcon: const Icon(Icons.remove_red_eye_outlined),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide.none,
-                      ),
-                    ),
-                  ),
-
-                  const SizedBox(height: 28),
-
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        backgroundColor: Colors.blue,
-                      ),
-                      onPressed: () {
-                        Navigator.push(context, 
-                          MaterialPageRoute(builder: (context) => const Dashboard()),
-                        );
-                      },
-                      child: const Text(
-                        "Masuk",
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  const SizedBox(height: 16),
-
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text("Lupa password? Hubungi guru laboran. "),
-                    ],
-                  )
-                ],
-              ),
-            ),
-          ),
-          SizedBox(height: 20),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
+          SingleChildScrollView(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  "Menyatukan Upaya untuk Kemajuan Siswa",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
-                    color: Color(0xFF212121),
+                // BANNER
+                SizedBox(
+                  height: 250,
+                  width: double.infinity,
+                  child: Image.asset(
+                    'assets/images/Banner.jpg',
+                    fit: BoxFit.cover,
                   ),
                 ),
-                const SizedBox(height: 10),
-                const Text(
-                  "Jurnalku adalah aplikasi cerdas yang membantu guru dan siswa dalam memantau dan mengelola kompetensi keahlian siswa secara efektif.",
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Color(0xFF616161),
+
+                const SizedBox(height: 20),
+
+                // FORM LOGIN BOX
+                _buildLoginCard(context),
+
+                const SizedBox(height: 50),
+
+                // FITUR-FITUR (banyak Card)
+                _buildFeatureCard(
+                  title: 'Dirancang Untuk Sekolah Kami',
+                  subtitle:
+                      'Dikembangkan khusus untuk memenuhi kebutuhan sekolah kami dengan fokus pada kemajuan siswa kami.',
+                ),
+                _gap(),
+                _buildFeatureCard(
+                  title: 'Pemantauan yang Tersruktur',
+                  subtitle:
+                      'Memudahkan guru dalam menyusun dan memantau daftar kompetensi keahlian yang harus dikuasai siswa.',
+                ),
+                _gap(),
+                _buildFeatureCard(
+                  title: 'Fitur Praktis dan Bermanfaat',
+                  subtitle:
+                      'Termasuk reminder otomatis, grafik perkembangan, dan analisis mendalam untuk efektivitas belajar.',
+                ),
+                _gap(),
+                _buildFeatureCard(
+                  title: 'Pengajuan Kompetensi oleh Siswa',
+                  subtitle:
+                      'Siswa dapat mengajukan kompetensi yang telah dikuasai untuk diverifikasi oleh guru.',
+                ),
+                _gap(),
+                _buildFeatureCard(
+                  title: 'Pantauan Real-Time dan Transparan',
+                  subtitle:
+                      'Monitoring langsung, menciptakan lingkungan belajar yang efisien',
+                ),
+
+                const SizedBox(height: 30),
+
+                // FOOTER
+                SizedBox(height: 20),
+                Center(
+                  child: Container(
+                    width: double.infinity,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 2, 57, 140),
+                    ),
+                    child: Center(
+                      child: Text(
+                        '© 2025 GEN-28 PPLG SMK Wikrama Bogor. All Rights Reserved.',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ],
             ),
-          )
+          ),
+
+          // FLOATING BUTTON
+          Positioned(
+            bottom: 30,
+            right: 20,
+            width: 150,
+            child: FloatingActionButton(
+              backgroundColor: const Color.fromARGB(255, 2, 57, 140),
+              onPressed: () {},
+              child: const Text(
+                'Jelajahi siswa',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
+
+  // ==== WIDGET PEMBANTU ====
+
+  Widget _buildLoginCard(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Colors.grey[100],
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(children: const [Text('Masuk untuk memulai '), Text('Jurnalku')]),
+          const SizedBox(height: 50),
+
+          // USERNAME
+          const Text('Username atau NIS'),
+          const SizedBox(height: 8),
+          TextField(
+            decoration: InputDecoration(
+              hintText: 'Masukkan username atau NIS',
+              filled: true,
+              fillColor: Colors.grey[100],
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: const BorderSide(width: 0.5, color: Colors.grey),
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 30),
+
+          // PASSWORD
+          const Text('Password'),
+          const SizedBox(height: 8),
+          TextField(
+            obscureText: true,
+            decoration: InputDecoration(
+              hintText: 'Masukkan password',
+              filled: true,
+              fillColor: Colors.grey[100],
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: const BorderSide(width: 0.5, color: Colors.grey),
+              ),
+              suffixIcon: const Icon(Icons.remove_red_eye_sharp),
+            ),
+          ),
+
+          const SizedBox(height: 35),
+
+          // BUTTON MASUK
+          SizedBox(
+            width: double.infinity,
+            height: 45,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 2, 57, 140),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(6),
+                ),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Dashboard()),
+                );
+              },
+              child: const Text('Masuk', style: TextStyle(color: Colors.white)),
+            ),
+          ),
+
+          const SizedBox(height: 30),
+
+          const Center(child: Text('Lupa password? Hubungi guru laboran')),
+
+          const SizedBox(height: 60),
+
+          const Center(child: Text("Menyatukan Upaya untuk Kemajuan Siswa")),
+          const SizedBox(height: 20),
+
+          const Center(
+            child: Text(
+              'Jurnalku adalah aplikasi cerdas yang \n'
+              'membantu guru dan siswa dalam memantau \n'
+              'dan mengelola kompetensi keahlian siswa \n'
+              'secara efektif.',
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildFeatureCard({required String title, required String subtitle}) {
+    return Card(
+      color: Colors.white,
+      margin: const EdgeInsets.symmetric(horizontal: 20),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [Text(title), const SizedBox(height: 8), Text(subtitle)],
+        ),
+      ),
+    );
+  }
+
+  SizedBox _gap() => const SizedBox(height: 30);
 }
