@@ -34,7 +34,6 @@ class CatatanSikapCard extends StatelessWidget {
           ),
         ],
       ),
-      trailing: Icon(Icons.expand_more, color: Colors.blue),
       children: [
         Padding(
           padding: const EdgeInsets.all(16.0),
