@@ -10,22 +10,73 @@ class WitnessRequest extends StatefulWidget {
 }
 
 class _WitnessRequestState extends State<WitnessRequest> {
+  final List<Map<String, dynamic>> requestData = [
+    {
+      "id": 1,
+      "nama": "Dimas Ady Bhaskara",
+      "rombel": "PPLG X-1",
+      "rayon": "Ciawi 2",
+      "deskripsi": "Membantu menjadi saksi pada kegiatan piket kelas.",
+      "tanggal": "12 Desember 2025",
+      "status": "pending",
+      "image": "assets/images/profile.png",
+    },
+    {
+      "id": 2,
+      "nama": "Dimas Ady Bhaskara",
+      "rombel": "PPLG X-3",
+      "rayon": "Tajur 1",
+      "deskripsi": "Menjadi saksi laporan keterlambatan teman sekelas.",
+      "tanggal": "10 Desember 2025",
+      "status": "pending",
+      "image": "assets/images/profile.jpg",
+    },
+    {
+      "id": 3,
+      "nama": "Dimas Ady Bhaskara",
+      "rombel": "PPLG X-2",
+      "rayon": "Cicurug 5",
+      "deskripsi": "Verifikasi kegiatan kebersihan kelas.",
+      "tanggal": "9 Desember 2025",
+      "status": "pending",
+      "image": "assets/images/profile.png",
+    },
+  ];
+
+  void _handleDecision(int id, String decision) {
+    setState(() {
+      final index = requestData.indexWhere((e) => e["id"] == id);
+      if (index >= 0) {
+        requestData[index]["status"] =
+            decision == "accept" ? "accepted" : "rejected";
+      }
+    });
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          decision == "accept" ? "Permintaan diterima" : "Permintaan ditolak",
+        ),
+        duration: const Duration(seconds: 2),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    final String today =
+    final formattedDate =
         DateFormat("EEEE, d MMMM yyyy", "en_US").format(DateTime.now());
 
     return Scaffold(
       appBar: const AppBarComponent(),
       body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        child: ListView(
           children: [
             const Text(
               "Permintaan Saksi",
               style: TextStyle(
-                fontSize: 28,
+                fontSize: 26,
                 fontWeight: FontWeight.bold,
                 color: Colors.black87,
               ),
@@ -35,136 +86,233 @@ class _WitnessRequestState extends State<WitnessRequest> {
 
             const Text(
               "Kelola permintaan menjadi saksi dari siswa lain",
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold ,color: Colors.black54),
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
+                color: Colors.black54,
+              ),
             ),
 
             const SizedBox(height: 16),
 
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              decoration: BoxDecoration(
-                color: const Color(0xFFE8F0FF),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Text(
-                today,
-                style: const TextStyle(
-                  color: Color(0xFF3366FF),
-                  fontWeight: FontWeight.w600,
+            Align(
+              alignment: Alignment.centerLeft,
+              child: IntrinsicWidth(
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 14,
+                    vertical: 8,
+                  ),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFE8F0FF),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Text(
+                    formattedDate,
+                    style: const TextStyle(
+                      color: Color(0xFF0A5BE0),
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                 ),
               ),
             ),
 
-            const SizedBox(height: 22),
+            const SizedBox(height: 20),
 
-            Center(
-              child: Container(
-                width: MediaQuery.of(context).size.width * 0.92,
+            ...requestData.map((item) {
+              final status = item["status"];
+              final isAccepted = status == "accepted";
+              final isRejected = status == "rejected";
+
+              return Container(
+                margin: const EdgeInsets.only(bottom: 12),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(14),
                   color: Colors.white,
+                  borderRadius: BorderRadius.circular(14),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black12,
                       blurRadius: 8,
-                      spreadRadius: 1,
-                      offset: const Offset(0, 3),
+                      offset: const Offset(0, 4),
                     ),
                   ],
                 ),
-                child: Column(
-                  children: [
-                    // HEADER
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 14, horizontal: 16),
-                      decoration: BoxDecoration(
-                        color: Colors.grey[100],
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(14),
-                          topRight: Radius.circular(14),
+                child: ExpansionTile(
+                  tilePadding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 8,
+                  ),
+                  childrenPadding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 10,
+                  ),
+
+                  shape: Border.all(color: Colors.transparent),
+
+                  title: Row(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.asset(
+                          item["image"],
+                          width: 42,
+                          height: 42,
+                          fit: BoxFit.cover,
                         ),
                       ),
-                      child: Row(
-                        children: const [
-                          Expanded(
-                            child: Center(
-                              child: Text(
-                                "PENGIRIM",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  letterSpacing: 0.3,
-                                ),
-                                textAlign: TextAlign.center,
+
+                      const SizedBox(width: 12),
+
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              item["nama"],
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
-                          ),
-                          Expanded(
-                            child: Center(
-                              child: Text(
-                                "TANGGAL",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  letterSpacing: 0.3,
-                                ),
-                                textAlign: TextAlign.center,
+                            const SizedBox(height: 4),
+                            Text(
+                              item["tanggal"],
+                              style: const TextStyle(
+                                fontSize: 13,
+                                color: Colors.black54,
                               ),
                             ),
+                          ],
+                        ),
+                      ),
+
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 6,
+                        ),
+                        decoration: BoxDecoration(
+                          color: isAccepted
+                              ? Colors.green.withOpacity(0.12)
+                              : isRejected
+                                  ? Colors.red.withOpacity(0.12)
+                                  : Colors.grey.withOpacity(0.12),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Text(
+                          isAccepted
+                              ? "Diterima"
+                              : isRejected
+                                  ? "Ditolak"
+                                  : "Menunggu",
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                            color: isAccepted
+                                ? Colors.green.shade700
+                                : isRejected
+                                    ? Colors.red.shade700
+                                    : Colors.black54,
                           ),
-                          Expanded(
-                            child: Center(
-                              child: Text(
-                                "KONFIRMASI",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  letterSpacing: 0.3,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
-                        ],
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  children: [
+                    const Divider(),
+
+                    // ===== Rombel (Rata Kiri) =====
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Rombel: ${item["rombel"]}",
+                        textAlign: TextAlign.left,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
 
-                    // EMPTY STATE
-                    Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(28),
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(14),
-                          bottomRight: Radius.circular(14),
+                    const SizedBox(height: 6),
+
+                    // ===== Rayon (Rata Kiri) =====
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Rayon: ${item["rayon"]}",
+                        textAlign: TextAlign.left,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
-                      child: Column(
-                        children: const [
-                          Icon(Icons.group_outlined,
-                              size: 48, color: Colors.grey),
-                          SizedBox(height: 10),
-                          Text(
-                            "Belum ada permintaan",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black87,
-                            ),
-                          ),
-                          SizedBox(height: 4),
-                          Text(
-                            "Belum ada yang mengirim permintaan saksi kepada Anda",
-                            style:
-                                TextStyle(color: Colors.black54, fontSize: 14),
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
+                    ),
+
+                    const SizedBox(height: 12),
+
+                    // ===== Deskripsi Tetap =====
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        item["deskripsi"],
+                        textAlign: TextAlign.left,
+                        style: const TextStyle(fontSize: 14),
                       ),
                     ),
+
+                    const SizedBox(height: 20),
+
+                    Row(
+                      children: [
+                        Expanded(
+                          child: ElevatedButton(
+                            onPressed: (isAccepted || isRejected)
+                                ? null
+                                : () => _handleDecision(item["id"], "reject"),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.red.withOpacity(0.12),
+                              foregroundColor: Colors.red.shade700,
+                              padding: const EdgeInsets.symmetric(vertical: 12),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              elevation: 0,
+                            ),
+                            child: const Text("Tolak"),
+                          ),
+                        ),
+
+                        const SizedBox(width: 12),
+
+                        Expanded(
+                          child: ElevatedButton(
+                            onPressed: (isAccepted || isRejected)
+                                ? null
+                                : () => _handleDecision(item["id"], "accept"),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.green.withOpacity(0.12),
+                              foregroundColor: Colors.green.shade800,
+                              padding: const EdgeInsets.symmetric(vertical: 12),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              elevation: 0,
+                            ),
+                            child: const Text("Terima"),
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    const SizedBox(height: 8),
                   ],
                 ),
-              ),
-            ),
+              );
+            }),
           ],
         ),
       ),
