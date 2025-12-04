@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jurnalku_app/widgets/appbar/app_bar_component.dart';
+import 'package:jurnalku_app/widgets/card/catatan_sikap.dart';
 import 'package:jurnalku_app/widgets/card/competency_card.dart';
 import 'package:jurnalku_app/widgets/table.dart';
 
@@ -11,13 +12,6 @@ class AttitudeRecord extends StatefulWidget {
 }
 
 class _AttitudeRecordState extends State<AttitudeRecord> {
-  // late TabController tabController;
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   tabController = TabController(length: 6, vsync: ScrollableState());
-  // }
-
   String? projectWork;
 
   @override
@@ -104,70 +98,90 @@ class _AttitudeRecordState extends State<AttitudeRecord> {
                 icon: Icons.check_circle_outline,
               ),
               SizedBox(height: 25),
-              RecordTable(),
 
-              // const SizedBox(height: 30),
+              CatatanSikapCard(),
 
-              // Container(
-              //   decoration: BoxDecoration(
-              //     borderRadius: BorderRadius.circular(10),
-              //     border: Border.all(width: 0.5, color: Colors.grey),
-              //     gradient: LinearGradient(
-              //       colors: [Colors.grey.shade100, Colors.grey.shade200],
-              //       begin: Alignment.topCenter,
-              //       end: Alignment.bottomCenter,
-              //     ),
-              //   ),
-              //   child: Column(
-              //     crossAxisAlignment: CrossAxisAlignment.start,
-              //     children: [
-              //       Padding(
-              //         padding: EdgeInsets.all(20),
-              //         child: Column(
-              //           crossAxisAlignment: CrossAxisAlignment.start,
+              SizedBox(height: 25),
+
+              CatatanSikapCard(),
+
+              // RecordTable(),
+
+              // ListView.builder(
+              //   shrinkWrap: true,
+              //   itemCount: 3,
+              //   physics: NeverScrollableScrollPhysics(),
+              //   itemBuilder: (context, index) {
+              //     return Card(
+              //       child: ExpansionTile(
+              //         leading: Icon(Icons.category, color: Colors.blue),
+
+              //         title: Text(
+              //           "Kedisiplinan",
+              //           style: TextStyle(fontWeight: FontWeight.bold),
+              //         ),
+
+              //         subtitle: Row(
               //           children: [
-              //             Text(
-              //               "Project Work",
-              //               style: TextStyle(
-              //                 fontSize: 25,
-              //                 fontWeight: FontWeight.bold,
-              //                 color: Colors.black87,
+              //             Text("12 Okt 2025", style: TextStyle(fontSize: 12)),
+              //             SizedBox(width: 8),
+              //             Container(
+              //               padding: EdgeInsets.symmetric(
+              //                 horizontal: 8,
+              //                 vertical: 2,
               //               ),
-              //             ),
-              //             SizedBox(height: 5),
-              //             Text(
-              //               "Kompetensi dan materi pembelajaran",
-              //               style: TextStyle(
-              //                 fontSize: 15,
-              //                 color: Colors.grey[600],
+              //               decoration: BoxDecoration(
+              //                 color: Colors.green[100],
+              //                 borderRadius: BorderRadius.circular(4),
+              //               ),
+              //               child: Text(
+              //                 "Selesai",
+              //                 style: TextStyle(
+              //                   color: Colors.green,
+              //                   fontSize: 10,
+              //                 ),
               //               ),
               //             ),
               //           ],
               //         ),
-              //       ),
-              //       //garis
-              //       Divider(height: 1, color: Colors.grey[300]),
 
-              //       Card(
-              //         margin: EdgeInsets.all(12),
-              //         elevation: 2,
-              //         child: ExpansionTile(
-              //           title: Text("Nama Project Work"),
-              //           childrenPadding: EdgeInsets.all(16),
-              //           children: [
-              //             tampilProjectWork("Kompetensi", ""),
-              //             tampilProjectWork("Guru", ""),
-              //             tampilProjectWork("Tanggal", ""),
-              //             tampilProjectWork("Status", ""),
-              //             tampilProjectWork("Catatan Guru", ""),
-              //             tampilProjectWork("Catatan Siswa", ""),
-              //           ],
-              //         ),
+              //         children: [
+              //           Padding(
+              //             padding: const EdgeInsets.all(16.0),
+              //             child: Column(
+              //               crossAxisAlignment: CrossAxisAlignment.start,
+              //               children: [
+              //                 Text("Dilaporkan oleh: Pak Guru A"),
+              //                 SizedBox(height: 8),
+              //                 Text(
+              //                   "Catatan: Siswa tidak membawa atribut lengkap saat upacara.",
+              //                   style: TextStyle(color: Colors.grey[700]),
+              //                 ),
+              //                 SizedBox(height: 16),
+              //                 Row(
+              //                   mainAxisAlignment: MainAxisAlignment.end,
+              //                   children: [
+              //                     TextButton(
+              //                       onPressed: () {},
+              //                       child: Text("Edit"),
+              //                     ),
+              //                     TextButton(
+              //                       onPressed: () {},
+              //                       child: Text(
+              //                         "Hapus",
+              //                         style: TextStyle(color: Colors.red),
+              //                       ),
+              //                     ),
+              //                   ],
+              //                 ),
+              //               ],
+              //             ),
+              //           ),
+              //         ],
               //       ),
-              //     ],
-              //   ),
+              //     );
+              //   },
               // ),
-              
             ],
           ),
         ),
@@ -175,15 +189,3 @@ class _AttitudeRecordState extends State<AttitudeRecord> {
     );
   }
 }
-
-// Widget tampilProjectWork(String projectWork, String value) {
-//   return Padding(
-//     padding: EdgeInsets.all(10),
-//     child: Row(
-//       children: [
-//         SizedBox(width: 100, child: Text(projectWork)),
-//         Expanded(child: Text(value))
-//       ],
-//     ),
-//   );
-// }

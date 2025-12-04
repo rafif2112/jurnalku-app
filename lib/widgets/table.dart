@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class RecordTable extends StatelessWidget {
   const RecordTable({super.key, this.items = const []});
+
   final List<Map<String, dynamic>> items;
 
   @override
@@ -15,18 +16,13 @@ class RecordTable extends StatelessWidget {
         ),
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: Column(
-            children: [
-              _buildTableHeader(),
-              items.isEmpty ? _buildEmptyState() : _buildTableRows(),
-            ],
-          ),
+          child: Column(children: [tableHeader(), emptyState()]),
         ),
       ),
     );
   }
 
-  Widget _buildTableHeader() {
+  Widget tableHeader() {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 15),
       color: Colors.grey.shade100,
@@ -44,32 +40,7 @@ class RecordTable extends StatelessWidget {
     );
   }
 
-  Widget _buildTableRows() {
-    return Column(
-      children: items.asMap().entries.map((e) {
-        final data = e.value;
-        return Container(
-          padding: const EdgeInsets.symmetric(vertical: 15),
-          decoration: BoxDecoration(
-            border: Border(bottom: BorderSide(color: Colors.grey.shade300)),
-          ),
-          child: Row(
-            children: [
-              _JobTableCell(width: 60, child: Text((e.key + 1).toString())),
-              _TableCell(width: 150, child: Text(data["kategori"])),
-              _TableCell(width: 250, child: Text(data["catatan"])),
-              _TableCell(width: 120, child: Text(data["status"])),
-              _TableCell(width: 150, child: Text(data["tanggal_1"])),
-              _TableCell(width: 180, child: Text(data["tanggal_2"])),
-              _TableCell(width: 100, child: Text(data["aksi"])),
-            ],
-          ),
-        );
-      }).toList(),
-    );
-  }
-
-  Widget _buildEmptyState() {
+  Widget emptyState() {
     return Container(
       width: 1010,
       height: 250,
@@ -299,7 +270,7 @@ class JobTable extends StatelessWidget {
 
   Widget _buildAddButton() {
     return GestureDetector(
-      onTap: () {}, 
+      onTap: () {},
       child: Container(
         padding: const EdgeInsets.all(12),
         alignment: Alignment.centerLeft,
@@ -336,18 +307,15 @@ class _ClickableHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {}, 
+      onTap: () {},
       child: SizedBox(
         width: width,
         child: Text(
           label,
           textAlign: TextAlign.center,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 14,
-          ),
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
         ),
       ),
     );
   }
-  }
+}

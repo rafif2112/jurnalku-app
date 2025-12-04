@@ -2,21 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:jurnalku_app/pages/attitude_record.dart';
 import 'package:jurnalku_app/pages/catatan_sikap.dart';
 import 'package:jurnalku_app/pages/dashboard.dart';
+import 'package:jurnalku_app/pages/guide.dart';
+import 'package:jurnalku_app/pages/habit_journal.dart';
 import 'package:jurnalku_app/pages/profile.dart';
 import 'package:jurnalku_app/pages/explore.dart';
 import 'package:jurnalku_app/pages/progress.dart';
 import 'package:jurnalku_app/pages/accountSetting.dart';
 import 'package:jurnalku_app/pages/login.dart';
+import 'package:jurnalku_app/pages/witnessRequest.dart';
 
 enum MenuOptions {
   dashboard(icon: Icons.home_outlined, label: 'Dashboard', widget: Dashboard()),
   profile(icon: Icons.person_2_outlined, label: 'Profil', widget: Profile()),
   explore(icon: Icons.explore_outlined, label: 'Jelajahi', widget: Explore()),
-  jurnalPembiasaan(icon: Icons.book_outlined, label: 'Jurnal Pembiasaan'),
-  permintaanSaksi(icon: Icons.how_to_reg_outlined, label: 'Permintaan Saksi'),
+  jurnalPembiasaan(icon: Icons.book_outlined, label: 'Jurnal Pembiasaan', widget: HabitJournalScreen()),
+  permintaanSaksi(icon: Icons.how_to_reg_outlined, label: 'Permintaan Saksi', widget: WitnessRequest()),
   catatanSikap(icon: Icons.warning_amber_outlined, label: 'Catatan Sikap', widget: AttitudeRecord()),
   progress(icon: Icons.bar_chart_outlined, label: 'Progress', widget: Progress()),
-  panduanPenggunaan(icon: Icons.menu_book_outlined, label: 'Panduan Penggunaan'),
+  panduanPenggunaan(icon: Icons.menu_book_outlined, label: 'Panduan Penggunaan', widget: Guide()),
   pengaturanAkun(icon: Icons.settings_outlined, label: 'Pengaturan Akun', widget: Settings()),
   logOut(icon: Icons.logout_outlined, label: 'Log Out', widget: Login()),;
 
