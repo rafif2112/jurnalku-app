@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:jurnalku_app/pages/progress/UKK_page.dart';
+import 'package:jurnalku_app/pages/progress/mobile_app_page.dart';
+import 'package:jurnalku_app/pages/progress/project_work_page.dart';
 import 'package:jurnalku_app/widgets/appbar/app_bar_component.dart';
+import 'package:jurnalku_app/widgets/card/progress_card.dart';
 import 'package:jurnalku_app/widgets/card/statistic_card.dart';
-import 'package:jurnalku_app/widgets/card/datatable_card.dart';
+import 'package:jurnalku_app/pages/progress/gim_page.dart';
+import 'package:jurnalku_app/pages/progress/lainnya_page.dart';
+
 
 class Progress extends StatelessWidget {
   const Progress({super.key});
@@ -83,23 +89,23 @@ class Progress extends StatelessWidget {
               ),
               SizedBox(height: 20),
 
-              DataTableCard(title: 'Project Work'),
+              ProgressCard(title: 'Project Work', subtitle: 'Kompetensi dan materi pembelajaran', routePage: ProjectWorkPage(),),
 
               SizedBox(height: 40),
 
-              DataTableCard(title: 'Mobile Apps'),
+              ProgressCard(title: 'Mobile Apps', subtitle: 'Kompetensi dan materi pembelajaran', routePage: MobileAppPage(),),
 
               SizedBox(height: 40),
 
-              DataTableCard(title: 'UKK (Uji Kompetensi Keahlian)'),
+              ProgressCard(title: 'UKK (Uji Kompetensi Keahlian)', subtitle: 'Kompetensi dan materi pembelajaran', routePage: UkkPage(),),
 
               SizedBox(height: 40),
 
-              DataTableCard(title: 'GIM'),
+              ProgressCard(title: 'GIM', subtitle: 'Kompetensi dan materi pembelajaran', routePage: GimPage(),),
 
               SizedBox(height: 40),
 
-              DataTableCard(title: 'Lainnya'),
+              ProgressCard(title: 'Lainnya', subtitle: 'Kompetensi dan materi pembelajaran', routePage: LainnyaPage(),),
 
               SizedBox(height: 40),
             ],

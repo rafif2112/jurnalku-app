@@ -2,7 +2,23 @@ import 'package:flutter/material.dart';
 
 class DataTableCard extends StatelessWidget {
   final String title;
-  const DataTableCard({super.key, required this.title});
+  final String kompetensi;
+  final String guru;
+  final String tanggal;
+  final String status;
+  final String catatanGuru;
+  final String catatanSiswa;
+
+  const DataTableCard({
+    super.key,
+    required this.title,
+    required this.kompetensi,
+    required this.guru,
+    required this.tanggal,
+    required this.status,
+    required this.catatanGuru,
+    required this.catatanSiswa,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -11,74 +27,93 @@ class DataTableCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(14),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black12,
-            blurRadius: 6,
-            offset: Offset(0, 3),
-          ),
+        boxShadow: const [
+          BoxShadow(color: Colors.black12, blurRadius: 6, offset: Offset(0, 3)),
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            title,
-            style: const TextStyle(
-              fontSize: 17,
-              fontWeight: FontWeight.w700,
-              color: Colors.black87,
-            ),
-          ),
-          const SizedBox(height: 6),
-          const Text(
-            "Kompetensi dan materi pembelajaran",
-            style: TextStyle(
-              fontSize: 16,
-              color: Colors.black87,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          const SizedBox(height: 12),
+          
+          // Divider pemisah
           const Divider(height: 1, color: Colors.black12),
           const SizedBox(height: 10),
 
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: const [
-                ColumnHeader("KOMPETENSI"),
-                SizedBox(width: 80),
-                ColumnHeader("GURU"),
-                SizedBox(width: 80),
-                ColumnHeader("TANGGAL"),
-                SizedBox(width: 85),
-                ColumnHeader("STATUS"),
-                SizedBox(width: 80),
-                ColumnHeader("CATATAN GURU"),
-                SizedBox(width: 80),
-                ColumnHeader("CATATAN SISWA"),
-              ],
+          // EXPANSION TILE
+          ExpansionTile(
+            title: Text(
+              title,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: Colors.black87,
+              ),
             ),
-          )
+            tilePadding: EdgeInsets.zero,
+            childrenPadding: const EdgeInsets.symmetric(horizontal: 0),
+
+            children: [
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+
+                    _buildLabel("Kompetensi"),
+                    _buildValue(kompetensi),
+
+                    _buildLabel("Guru"),
+                    _buildValue(guru),
+
+                    _buildLabel("Tanggal"),
+                    _buildValue(tanggal),
+
+                    _buildLabel("Status"),
+                    Text(
+                      status,
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                        color: status == "Disetujui" ? Colors.green : Colors.red,
+                      ),
+                    ),
+                    const SizedBox(height: 14),
+
+                    _buildLabel("Catatan Guru"),
+                    _buildValue(catatanGuru),
+
+                    _buildLabel("Catatan Siswa"),
+                    _buildValue(catatanSiswa),
+
+                    const SizedBox(height: 10),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
   }
-}
 
-class ColumnHeader extends StatelessWidget {
-  final String label;
-  const ColumnHeader(this.label, {super.key});
+  // Widget kecil biar kode lebih rapi 😎
+  Widget _buildLabel(String text) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 2),
+      child: Text(
+        text,
+        style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+      ),
+    );
+  }
 
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      label,
-      style: const TextStyle(
-        fontSize: 12,
-        fontWeight: FontWeight.w100,
-        color:Color.fromARGB(255, 141, 174, 239),
+  Widget _buildValue(String text) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 14),
+      child: Text(
+        text,
+        style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
       ),
     );
   }
