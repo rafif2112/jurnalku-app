@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jurnalku_app/widgets/appbar/app_bar_component.dart';
+
 class Settings extends StatelessWidget {
   const Settings({super.key});
 

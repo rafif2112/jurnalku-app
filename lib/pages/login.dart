@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jurnalku_app/pages/dashboard.dart';
+import 'package:jurnalku_app/widgets/footer/footer_explore.dart';
+import 'package:jurnalku_app/widgets/card/login_card.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -8,108 +10,113 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Stack(
-        children: [
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                // BANNER
-                SizedBox(
-                  height: 250,
-                  width: double.infinity,
-                  child: Image.asset(
-                    'assets/images/Banner.jpg',
-                    fit: BoxFit.cover,
-                  ),
-                ),
 
-                const SizedBox(height: 20),
-
-                // FORM LOGIN BOX
-                _buildLoginCard(context),
-
-                const SizedBox(height: 50),
-
-                // FITUR-FITUR (banyak Card)
-                _buildFeatureCard(
-                  title: 'Dirancang Untuk Sekolah Kami',
-                  subtitle:
-                      'Dikembangkan khusus untuk memenuhi kebutuhan sekolah kami dengan fokus pada kemajuan siswa kami.',
-                ),
-                _gap(),
-                _buildFeatureCard(
-                  title: 'Pemantauan yang Tersruktur',
-                  subtitle:
-                      'Memudahkan guru dalam menyusun dan memantau daftar kompetensi keahlian yang harus dikuasai siswa.',
-                ),
-                _gap(),
-                _buildFeatureCard(
-                  title: 'Fitur Praktis dan Bermanfaat',
-                  subtitle:
-                      'Termasuk reminder otomatis, grafik perkembangan, dan analisis mendalam untuk efektivitas belajar.',
-                ),
-                _gap(),
-                _buildFeatureCard(
-                  title: 'Pengajuan Kompetensi oleh Siswa',
-                  subtitle:
-                      'Siswa dapat mengajukan kompetensi yang telah dikuasai untuk diverifikasi oleh guru.',
-                ),
-                _gap(),
-                _buildFeatureCard(
-                  title: 'Pantauan Real-Time dan Transparan',
-                  subtitle:
-                      'Monitoring langsung, menciptakan lingkungan belajar yang efisien',
-                ),
-
-                const SizedBox(height: 30),
-
-                // FOOTER
-                SizedBox(height: 20),
-                Center(
-                  child: Container(
-                    width: double.infinity,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 2, 57, 140),
-                    ),
-                    child: Center(
-                      child: Text(
-                        '© 2025 GEN-28 PPLG SMK Wikrama Bogor. All Rights Reserved.',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+      // --- FLOATING BUTTON ---
+      floatingActionButton: SizedBox(
+        width: 150,
+        child: FloatingActionButton(
+          backgroundColor: const Color.fromARGB(255, 2, 57, 140),
+          onPressed: () {},
+          child: const Text(
+            'Jelajahi siswa',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.white),
           ),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
 
-          // FLOATING BUTTON
-          Positioned(
-            bottom: 30,
-            right: 20,
-            width: 150,
-            child: FloatingActionButton(
-              backgroundColor: const Color.fromARGB(255, 2, 57, 140),
-              onPressed: () {},
-              child: const Text(
-                'Jelajahi siswa',
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.white),
+      // --- BODY ---
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            // BANNER
+            SizedBox(
+              height: 250,
+              width: double.infinity,
+              child: Image.asset(
+                'assets/images/Banner.jpg',
+                fit: BoxFit.cover,
               ),
             ),
-          ),
-        ],
+
+             SizedBox(height: 20),
+
+            // FORM LOGIN
+            _buildLoginCard(context),
+
+             SizedBox(height: 50),
+
+            const Center(child: Text("Menyatukan Upaya untuk Kemajuan Siswa")),
+
+            // FITUR – FITUR
+            const LoginCard(
+              iconPath: 'assets/icons/school.svg',
+              title: "Dirancang untuk Sekolah Kami",
+              description:
+                  "Dikembangkan khusus untuk memenuhi kebutuhan sekolah kami dengan fokus pada kemajuan siswa kami.",
+            ),
+
+            const SizedBox(height: 10
+            ),
+
+            const LoginCard(
+              iconPath: 'assets/icons/flow.svg',
+              title: "Pemantauan yang Terstruktur",
+              description:
+                  "Memudahkan guru dalam menyusun dan memantau daftar kompetensi keahlian yang harus dikuasai siswa.",
+            ),
+
+            const SizedBox(height: 10
+            ),
+
+            const LoginCard(
+              iconPath: 'assets/icons/people_meditation.svg',
+              title: "Fitur Praktis dan Bermanfaat",
+              description:
+                  "Termasuk reminder otomatis, grafik perkembangan, dan analisis mendalam untuk efektivitas belajar.",
+            ),
+
+            const SizedBox(height: 10
+            ),
+
+            const LoginCard(
+              iconPath: 'assets/icons/toga.svg',
+              title: "Pengajuan Kompetensi oleh Siswa",
+              description:
+                  "Siswa dapat mengajukan kompetensi yang telah dikuasai untuk diverifikasi oleh guru.",
+            ),
+
+            const SizedBox(height: 10
+            ),
+
+            const LoginCard(
+              iconPath: 'assets/icons/note.svg',
+              title: "Validasi dan Tanda Tangan Guru",
+              description:
+                  "Setiap kompetensi yang disetujui akan diberikan tanda terima dan tanda tangan guru sebagai bukti.",
+            ),
+
+            const SizedBox(height: 10
+            ),
+
+            const LoginCard(
+              iconPath: 'assets/icons/monitor.svg',
+              title: "Pantauan Real-Time dan Transparan",
+              description: "Monitoring langsung, menciptakan lingkungan belajar yang efisien.",
+            ),
+
+            const SizedBox(height: 20),
+
+            // FOOTER
+            const FooterWidget(),
+          ],
+        ),
       ),
     );
   }
 
-  // ==== WIDGET PEMBANTU ====
-
+  // LOGIN FORM CARD
   Widget _buildLoginCard(BuildContext context) {
     return Container(
       width: double.infinity,
@@ -122,7 +129,22 @@ class Login extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(children: const [Text('Masuk untuk memulai '), Text('Jurnalku')]),
+          Row(
+            children: const [
+              Text(
+                'Masuk untuk memulai ',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              Text(
+                'Jurnalku',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 2, 57, 140),
+                ),
+              ),
+            ],
+          ),
+
           const SizedBox(height: 50),
 
           // USERNAME
@@ -193,38 +215,8 @@ class Login extends StatelessWidget {
           const Center(child: Text('Lupa password? Hubungi guru laboran')),
 
           const SizedBox(height: 60),
-
-          const Center(child: Text("Menyatukan Upaya untuk Kemajuan Siswa")),
-          const SizedBox(height: 20),
-
-          const Center(
-            child: Text(
-              'Jurnalku adalah aplikasi cerdas yang \n'
-              'membantu guru dan siswa dalam memantau \n'
-              'dan mengelola kompetensi keahlian siswa \n'
-              'secara efektif.',
-              textAlign: TextAlign.center,
-            ),
-          ),
         ],
       ),
     );
   }
-
-  Widget _buildFeatureCard({required String title, required String subtitle}) {
-    return Card(
-      color: Colors.white,
-      margin: const EdgeInsets.symmetric(horizontal: 20),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [Text(title), const SizedBox(height: 8), Text(subtitle)],
-        ),
-      ),
-    );
-  }
-
-  SizedBox _gap() => const SizedBox(height: 30);
 }
