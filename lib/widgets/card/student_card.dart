@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jurnalku_app/pages/profile.dart';
 
 class StudentCard extends StatelessWidget {
   final String image; 
@@ -113,7 +114,11 @@ class StudentCard extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12)),
               ),
-              onPressed: onDetail,
+              onPressed: () {
+                Navigator.push(context, 
+                  MaterialPageRoute(builder: (context) => Profile()),
+                );
+              },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [

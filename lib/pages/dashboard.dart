@@ -2,6 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:jurnalku_app/pages/catatan_sikap.dart';
+import 'package:jurnalku_app/pages/habit_journal.dart';
+import 'package:jurnalku_app/pages/profile.dart';
+import 'package:jurnalku_app/pages/progress.dart';
+import 'package:jurnalku_app/pages/witnessRequest.dart';
 import 'package:jurnalku_app/widgets/appbar/app_bar_component.dart';
 import 'package:jurnalku_app/widgets/card/dashboard_card.dart';
 import 'package:jurnalku_app/widgets/card/statistic_card.dart';
@@ -183,6 +188,14 @@ class Dashboard extends StatelessWidget {
                               size: 16,
                               color: Colors.grey[600],
                             ),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const Profile(),
+                                ),
+                              );
+                            },
                           ),
                           Divider(),
 
@@ -208,6 +221,14 @@ class Dashboard extends StatelessWidget {
                               size: 16,
                               color: Colors.grey[600],
                             ),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const Profile(),
+                                ),
+                              );
+                            }
                           ),
                           Divider(),
 
@@ -233,6 +254,14 @@ class Dashboard extends StatelessWidget {
                               size: 16,
                               color: Colors.grey[600],
                             ),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const Profile(),
+                                ),
+                              );
+                            }
                           ),
                         ],
                       ),
@@ -283,6 +312,14 @@ class Dashboard extends StatelessWidget {
                               size: 16,
                               color: Colors.grey[600],
                             ),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const HabitJournalScreen(),
+                                ),
+                              );
+                            },
                           ),
                           Divider(),
 
@@ -307,6 +344,14 @@ class Dashboard extends StatelessWidget {
                               size: 16,
                               color: Colors.grey[600],
                             ),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const WitnessRequest(),
+                                ),
+                              );
+                            }
                           ),
                           Divider(),
 
@@ -332,6 +377,14 @@ class Dashboard extends StatelessWidget {
                               size: 16,
                               color: Colors.grey[600],
                             ),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const Progress(),
+                                ),
+                              );
+                            }
                           ),
                           Divider(),
 
@@ -357,6 +410,14 @@ class Dashboard extends StatelessWidget {
                               size: 16,
                               color: Colors.grey[600],
                             ),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const CatatanSikapScreen(),
+                                ),
+                              );
+                            }
                           ),
                         ],
                       ),
